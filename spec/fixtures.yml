@@ -1,0 +1,51 @@
+:android:
+  basic_strings.xml:
+    - meta_key: foobar
+      key: baz
+      line_number: 2
+    - meta_key: password_length_too_short
+      key: Password is too short
+      line_number: 3
+    - meta_key: password_length_too_long
+      key: Password is too long
+      line_number: 4
+    - meta_key: password_empty
+      key: Please enter your password.
+      line_number: 5
+    - meta_key: username_empty
+      key: Please enter your email address.
+      line_number: 6
+  basic_arrays.xml:
+    - meta_key: captains.0
+      key: Janeway
+    - meta_key: captains.1
+      key: Sisko
+    - meta_key: captains.2
+      key: Picard
+    - meta_key: captains.3
+      key: Kirk
+  basic_plurals.xml:
+    - meta_key: horses.zero
+      key: There are no horses
+    - meta_key: horses.one
+      key: There is one horse
+    - meta_key: horses.other
+      key: There are %d horses
+  quotes.xml:
+    - meta_key: quotes
+      key: I have quotes
+    - meta_key: leading_space
+      key: " I have a leading space"
+    - meta_key: internal_quotes
+      key: I have "internal" quotes
+    - meta_key: apostrophes
+      key: That's the ticket
+    - meta_key: apostrophes_in_quotes
+      key: That's the ticket
+    - meta_key: escaped_apostrophes_in_quotes
+      key: That's the ticket
+  markup.xml:
+    - meta_key: internal_markup
+      key: I <b>have</b> <a href="foo">internal</a> markup
+    - meta_key: quoted_markup
+      key: I <b>have</b> <a href="foo">quoted</a> markup
