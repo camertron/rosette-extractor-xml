@@ -18,7 +18,7 @@ module Rosette
       end
 
       def supports_line_numbers?
-        true
+        false
       end
 
       protected
