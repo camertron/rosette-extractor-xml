@@ -112,7 +112,10 @@ module Rosette
         end
 
         def line_number_from(node)
-          node.line
+          # Nokogiri supports `node.line`, but it doesn't return
+          # correct line numbers when running on JRuby. See:
+          # https://github.com/sparklemotion/nokogiri/issues/1223
+          nil
         end
 
         def unescape(text)
