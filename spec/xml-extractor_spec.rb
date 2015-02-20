@@ -21,7 +21,6 @@ describe XmlExtractor do
             expected_phrase = expected_phrases[expected_phrase_index]
             expect(expected_phrase).to_not be_nil
             expect(expected_phrase['key']).to eq(actual_phrase.key)
-            # expect(expected_phrase['line_number']).to eq (line_number)
             expected_phrases.delete_at(expected_phrase_index)
           end
 
