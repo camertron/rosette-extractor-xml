@@ -88,8 +88,11 @@ module Rosette
             end
           end
 
+          # safe to call `strip` after `to_xml` because any string that
+          # needs leading or trailing whitespace preserved should be wrapped
+          # in double quotes
           strip_enclosing_quotes(
-            builder.doc.xpath('/root/node()').to_xml
+            builder.doc.xpath('/root/node()').to_xml.strip
           )
         end
 
