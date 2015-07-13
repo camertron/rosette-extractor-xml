@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rosette-proj/rosette-extractor-xml.svg)](https://travis-ci.org/rosette-proj/rosette-extractor-xml) [![Code Climate](https://codeclimate.com/github/rosette-proj/rosette-extractor-xml/badges/gpa.svg)](https://codeclimate.com/github/rosette-proj/rosette-extractor-xml) [![Test Coverage](https://codeclimate.com/github/rosette-proj/rosette-extractor-xml/badges/coverage.svg)](https://codeclimate.com/github/rosette-proj/rosette-extractor-xml/coverage)
+
 rosette-extractor-xml
 ====================
 
@@ -10,8 +12,6 @@ Extracts translatable strings from XML files for the Rosette internationalizatio
 Then, somewhere in your project:
 
 ```ruby
-# this project must be run under jruby
-require 'jbundler' # or somehow add dependent jars to your CLASSPATH
 require 'rosette/extractors/xml-extractor'
 ```
 
@@ -30,20 +30,23 @@ Let's assume you're configuring an instance of [`Rosette::Server`](https://githu
 ```ruby
 require 'rosette/extractors/xml-extractor'
 
-config = Rosette.build_config do |config|
+rosette_config = Rosette.build_config do |config|
   config.add_repo('my_awesome_repo') do |repo_config|
     repo_config.add_extractor('xml/android') do |extractor_config|
       extractor_config.match_file_extensions(['.xml'])
     end
   end
 end
+
+server = Rosette::Server::ApiV1.new(rosette_config)
+run server
 ```
 
 See the documentation contained in [rosette-core](https://github.com/rosette-proj/rosette-core) for a complete list of extractor configuration options in addition to `match_file_extensions`.
 
 ### Standalone Usage
 
-While most of the time rosette-extractor-xml will probably be used alongside rosette-server, there may arise use cases where someone might want to use it on its own. The `extract_each_from` method on `AndroidExtractor` yields `Rosette::Core::Phrase` objects (or returns an enumerator):
+While most of the time rosette-extractor-xml will probably be used alongside rosette-server (or similar), there may arise use cases where someone might want to use it on its own. The `extract_each_from` method on `AndroidExtractor` yields `Rosette::Core::Phrase` objects (or returns an enumerator):
 
 ```ruby
 xml_source_code = '<resources><string name="my_string">Foobarbaz</string></resources>'
@@ -56,7 +59,7 @@ end
 
 ## Requirements
 
-This project must be run under jRuby. It uses [jbundler](https://github.com/mkristian/jbundler) to manage java dependencies via Maven. Run `gem install jbundler` and `jbundle` in the project root to download and install java dependencies.
+This project must be run under jRuby. It uses [expert](https://github.com/camertron/expert) to manage java dependencies via Maven. Run `bundle exec expert install` in the project root to download and install java dependencies.
 
 ## Running Tests
 
