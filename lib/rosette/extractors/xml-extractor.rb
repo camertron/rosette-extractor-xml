@@ -2,7 +2,7 @@
 
 require 'nokogiri'
 require 'rosette/core'
-require 'ext/htmlentities/android_xml'
+require 'ext/htmlentities/android_xml_decoder'
 
 module Rosette
   module Extractors
