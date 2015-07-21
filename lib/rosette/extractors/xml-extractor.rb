@@ -125,6 +125,9 @@ module Rosette
           text
             .gsub("\\'", "'")
             .gsub('\\"', '"')
+            .gsub("\\n", "\n")
+            .gsub("\\r", "\r")
+            .gsub("\\t", "\t")
         end
 
         def strip_enclosing_quotes(text)

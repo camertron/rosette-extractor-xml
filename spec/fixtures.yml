@@ -49,3 +49,8 @@
       key: I <b>have</b> <a href="foo">internal</a> markup
     - meta_key: quoted_markup
       key: I <b>have</b> <a href="foo">quoted</a> markup
+  newlines.xml:
+    - meta_key: foobar
+      key: baz
+    - key: "Password is\ntoo short"
+      meta_key: password_length_too_short
