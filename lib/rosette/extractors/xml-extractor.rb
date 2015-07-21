@@ -2,6 +2,7 @@
 
 require 'nokogiri'
 require 'rosette/core'
+require 'ext/htmlentities/android_xml'
 
 module Rosette
   module Extractors
@@ -91,8 +92,10 @@ module Rosette
           # safe to call `strip` after `to_xml` because any string that
           # needs leading or trailing whitespace preserved should be wrapped
           # in double quotes
-          strip_enclosing_quotes(
-            builder.doc.xpath('/root/node()').to_xml.strip
+          unescape(
+            strip_enclosing_quotes(
+              builder.doc.xpath('/root/node()').to_xml.strip
+            )
           )
         end
 
@@ -122,12 +125,18 @@ module Rosette
         end
 
         def unescape(text)
-          text
+          text = text
             .gsub("\\'", "'")
             .gsub('\\"', '"')
             .gsub("\\n", "\n")
             .gsub("\\r", "\r")
             .gsub("\\t", "\t")
+
+          coder.decode(text)
+        end
+
+        def coder
+          @coder ||= HTMLEntities::AndroidXmlDecoder.new
         end
 
         def strip_enclosing_quotes(text)

@@ -54,3 +54,6 @@
       key: baz
     - key: "Password is\ntoo short"
       meta_key: password_length_too_short
+  entities.xml:
+    - meta_key: states
+      key: "Alaska & Washington"
