@@ -2,6 +2,6 @@
 
 module Rosette
   module Extractors
-    XML_EXTRACTOR_VERSION = '1.0.0'
+    XML_EXTRACTOR_VERSION = '1.0.1'
   end
 end
